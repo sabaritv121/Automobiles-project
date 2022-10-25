@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends 'customer/customerbase.html' %}
+{% block content %}
+
+<div class="col-lg-10">
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+<!--    <div class="card">-->
+<!--        <div class="card-header">-->
+<!--            <strong class="card-title">AVAILABLE SCHEDULES</strong>-->
+<!--        </div>-->
+<!--        <br>-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-6 "></div>-->
+<!--            <div class="col-lg-6">-->
+<!--                <form method="get" class="form-inline " style="float:right;">-->
+<!--                    <div class="md-form my-0">-->
+<!--                        {{scheduleFilter.form}}-->
+<!--                        <button class="btn btn-primary mr-2" type="submit">Search</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <br>-->
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">SI No</th>
+                    <th scope="col">Date</th>
+
+                    <th scope="col">Start Time</th>
+                    <th scope="col">End Time</th>
+                    <th scope="col">Take Appointment</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in schedule %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{n.date}}</td>
+
+                    <td>{{n.start_time}}</td>
+                    <td>{{n.end_time}}</td>
+                    <td>
+                        <a href="{% url 'take_appointment' n.id %}">
+                            <button type="button" class="btn btn-primary">Book Appointment</button>
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7"><h3>No Results Found</h3></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+window.mytest = function()
+{ var isValid = confirm('Are you sure Want to Delete ?');if (!isValid) { event.preventDefault();
+  }}
+
+
+
+
+
+
+
+
+
+
+</script>
+{% endblock %}

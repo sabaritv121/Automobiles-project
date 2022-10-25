@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'aaaAdmin.html' %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block content %}
+
+
+                <div class="container-fluid">
+                    <h1>Managers Registration</h1>
+                  <div class="card">
+                      <form method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                  <div class="container">
+
+                   {{form2|crispy}}
+                      {{form1|crispy}}
+                      <button type="submit"> submit </button>
+                  </div>
+                </form>
+                </div>
+        {% endblock %}

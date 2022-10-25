@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+{% extends 'customer/customerbase.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+<div class="col-lg-10">
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title"> Check status </strong>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-6 "></div>
+            <div class="col-lg-6">
+                <form method="get" class="form-inline " style="float:right;">
+                    <div class="md-form my-0">
+                        {{statusFilter.form }}
+                        <button class="btn btn-primary mr-2" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+       <div class="card-content">
+						<table>
+							<thead>
+                <tr>
+                  <th>Customer Name</th>
+
+                  <th>Vehicle Name</th>
+                       <th>Vehicle model</th>
+                    <th>Vehicle brand</th>
+                    <th>Cost</th>
+                     <th>Customer</th>
+                     <th>Manager</th>
+                       <th>date</th>
+
+
+                  <th>Problem Description</th>
+                  <th>Status</th>
+
+
+
+                </tr>
+							</thead>
+							<tbody>
+
+                <tr>
+                  {% for r in data %}
+
+                  <td> {{r.customer}}</td>
+
+
+                  <td> {{r.vehicle_name}}</td>
+                  <td>{{r.vehicle_model}}</td>
+                  <td>{{r.vehicle_brand}}</td>
+                     <td>{{r.cost}}</td>
+                     <td>{{r.customer}}</td>
+                    <td>{{r.worksmanager}}</td>
+                    <td>{{r.date}}</td>
+                    <td>{{r.problem_description}}</td>
+                  <td>{{r.status}}</td>
+
+
+
+                </tr>
+                    {% endfor %}
+
+							</tbody>
+						</table>
+					</div>
+    </div>
+</div>
+
+{% endblock %}

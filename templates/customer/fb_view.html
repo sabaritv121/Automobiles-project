@@ -1,0 +1,52 @@
+<!DOCTYPE>
+{% extends 'customer/customerbase.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-lg-10">
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{message}}
+    </div>
+    {% endfor %}
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">YOUR FEEDBACKS</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">SI No</th>
+                    <th scope="col">name</th>
+
+
+                    <th scope="col">Feedback</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Reply</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for n in feedback %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{n.user}}</td>
+
+                    <td>{{n.feedback}}</td>
+                    <td>{{n.date}}</td>
+                    <td>
+                        {% if n.reply == None %}
+                        <p> No reply yet..</p>
+                        {% else %}
+                        {{n.reply}}
+                        {% endif %}
+                    </td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

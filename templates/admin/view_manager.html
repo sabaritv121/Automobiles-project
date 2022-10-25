@@ -1,0 +1,63 @@
+{% extends 'aaaAdmin.html' %}
+{% block content %}
+{% load crispy_forms_filters %}
+{% load static %}
+	<!-- main content -->
+	<div class="wrapper">
+
+<!-- ****** table  start ********** -->
+		<div class="row">
+			<div class="col-12 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="color:red; text-align:center" >Works managers
+						</h3>
+
+					</div>
+					<div class="card-content">
+						<table>
+							<thead>
+                <tr>
+                  <th>Name</th>
+					 <th>                  </th>
+                  <th>Profile Picture  </th>
+                  <th>Mobile</th>
+					<th>Dob</th>
+
+
+                  <th>Update</th>
+                  <th>Delete</th>
+                </tr>
+							</thead>
+							<tbody>
+              {% for m in data %}
+                <tr>
+                  <td> {{m.name}}</td>
+					<td>   </td>
+					<td><img src="{{ m.profile_pic.url }}" style="width:100px"/></td>
+					<td>{{m.mobile}}</td>
+					<td>{{m.email}}</td>
+                    <td>{{m.address}}</td>
+
+
+					<br><br>
+
+ 					<td><a href="{% url 'wm_update' m.user_id %}">
+                        <button type="button" class="btn btn-primary">Update</button>
+                    </a></td>
+					<td><a style="color:blue; text-decoration:none;font-size:25px;"href="{% url 'delete-wm' m.user_id  %}">delete&#10008;</a></td>
+
+                </tr>
+                {% endfor %}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- ****** table start ********** -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+	<!-- end main content -->
+{% endblock content %}

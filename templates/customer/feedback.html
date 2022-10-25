@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'customer/customerbase.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+<h1> Feedback form </h1>
+
+                <div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <strong class="card-title">Customer Feedback</strong>
+        </div>
+        <div class="card-body">
+            <!-- Credit Card -->
+            <div id="pay-invoice">
+                <div class="card-body">
+
+                    <form method="post">{% csrf_token%}
+                        <div class="form-group">
+                            {{form|crispy}}
+                        </div>
+
+                        <div class="form-actions form-group ">
+                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                        </div>
+                        {% for message in messages %}
+                        <div class="alert alert-primary" role="alert">
+                            {{message}}
+                        </div>
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div> <!-- .card -->
+
+</div>
+
+{% endblock %}
+
+

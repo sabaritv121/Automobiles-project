@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% extends 'worksmanager/managerbase.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="wrapper">
+
+<!-- ****** table  start ********** -->
+		<div class="row">
+			<div class="col-12 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 style="color:red; text-align:center" >work assigned
+						</h3>
+
+					</div>
+					<div class="card-content">
+						<table>
+							<thead>
+                <tr>
+                  <th>Customer Name</th>
+
+                  <th>Vehicle Name</th>
+                       <th>Vehicle model</th>
+                    <th>Vehicle brand</th>
+                    <th>Cost</th>
+                     <th>Customer</th>
+                     <th>Manager</th>
+                       <th>date</th>
+
+
+                  <th>Problem Description</th>
+                  <th>Status</th>
+                  <th>Change Status</th>/
+
+                </tr>
+							</thead>
+							<tbody>
+
+                <tr>
+                  {% for r in data %}
+
+                  <td> {{r.customer}}</td>
+
+
+                  <td> {{r.vehicle_name}}</td>
+                  <td>{{r.vehicle_model}}</td>
+                  <td>{{r.vehicle_brand}}</td>
+                     <td>{{r.cost}}</td>
+                     <td>{{r.customer}}</td>
+                    <td>{{r.worksmanager}}</td>
+                    <td>{{r.date}}</td>
+                    <td>{{r.problem_description}}</td>
+                  <td>{{r.status}}</td>
+
+                  <td><a  style="color:red; text-decoration:none;font-size:25px;" href="{% url 'wm_status' r.id %}">&#9998;</a></td>
+<!--                     <td><a href="#">-->
+<!--                        <button type="button" class="btn btn-primary">Update</button>-->
+<!--                    </a></td>-->
+                </tr>
+                    {% endfor %}
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- ****** table start ********** -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	</div>
+	<!-- end main content -->
+{% endblock content %}
